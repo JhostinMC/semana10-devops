@@ -1,0 +1,26 @@
+name: Testing Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar index.html
+        run: test -f index.html
+
+      - name: Verificar style.css
+        run: test -f style.css
+
+      - name: Verificar script.js
+        run: test -f script.js
+
+      - name: Mensaje final
+        run: echo "Todas las pruebas se ejecutaron correctamente"
